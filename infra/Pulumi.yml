@@ -1,7 +1,0 @@
-name: s3-static-deploy
-runtime: nodejs
-description: Pulumi stack for deploying static files to S3
-
-config:
-  aws:region: us-east-1
-  s3BucketName: <your-s3-bucket-name>
