@@ -30,7 +30,7 @@ jobs:
       uses: pulumi/actions@v3
       with:
         command: preview
-        stack-name: "s3-static-deploy/test-app"
+        stack-name: "most/s3-static-deploy/test-app" # org/project/stack
         work-dir: ./infra
     
     - name: Deploy to S3
