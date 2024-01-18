@@ -23,9 +23,6 @@ jobs:
         submodules: recursive
         token: ${{ secrets.PAT_TOKEN }}
 
-    - name: Install dependencies
-      run: npm install
-
     - name: Login to Pulumi service
       run: pulumi login
       env:
@@ -36,6 +33,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ github.token }}
 
+    - name: Install dependencies in ./infra
+      run: |
+        cd ./infra
+        yarn install
+  
     - name: Preview services
       uses: pulumi/actions@v3
       with:
