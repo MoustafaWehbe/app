@@ -26,9 +26,6 @@ jobs:
       env:
         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
 
-    - name: Set AWS credentials
-      run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }} && aws configure set region your-aws-region
-
     - name: Preview Pulumi stack
       run: pulumi preview
 
@@ -36,4 +33,4 @@ jobs:
       run: pulumi up --yes
 
     - name: Complete deployment
-      run: pulumi stack output bucketName > s3_bucket.txt
+      run: pulumi stack output myDbName > myDbName.txt
