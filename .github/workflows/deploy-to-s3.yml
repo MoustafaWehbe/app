@@ -28,6 +28,8 @@ jobs:
 
     - name: Initialize and update submodules
       run: git submodule update --init --recursive
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
 
     - name: Preview services
       uses: pulumi/actions@v3
@@ -35,7 +37,9 @@ jobs:
         command: preview
         stack-name: "most/s3-static-deploy/test-app" # org/project/stack
         work-dir: ./infra
-    
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+
     - name: Deploy to S3
       run: pulumi up --yes
 
