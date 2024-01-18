@@ -48,7 +48,9 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
 
     - name: Deploy to S3
-      run: pulumi up --yes
+      run: |
+        cd ./infra
+        pulumi up --yes
 
     - name: Complete deployment
       run: pulumi stack output myDbName > myDbName.txt
