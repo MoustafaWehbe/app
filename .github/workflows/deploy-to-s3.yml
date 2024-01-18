@@ -26,9 +26,13 @@ jobs:
       env:
         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
 
-    - name: Preview Pulumi stack
-      run: pulumi preview
-
+    - name: Preview services
+      uses: pulumi/actions@v3
+      with:
+        command: preview
+        stack-name: "s3-static-deploy/test-app"
+        work-dir: ./infra
+    
     - name: Deploy to S3
       run: pulumi up --yes
 
