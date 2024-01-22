@@ -1,0 +1,13 @@
+name: Update ref
+
+on:
+  repository_dispatch:
+    types: [trigger-update-ref]
+
+jobs:
+  your-job-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Triggered Update Ref
+        run: |
+          echo "This workflow was triggered from infra"
