@@ -13,6 +13,16 @@ jobs:
         with:
             ref: main
             token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/checkout@v3
+        with:
+            submodules: recursive
+            token: ${{ secrets.PAT_TOKEN }}
+
+      - name: Initialize and update submodules
+        run: git submodule update --init --recursive
+        env:
+            GITHUB_TOKEN: ${{ github.token }}
       
       - name: Set Git user identity
         run: |
